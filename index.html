@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Angel Javier Yépez Chacón - Sitio Profesional</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+
+    /* Navigation */
+    .nav-container {
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .nav-btn {
+      background: #f3f4f6;
+      color: #374151;
+      border: none;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1 1 auto;
+      min-width: 120px;
+      justify-content: center;
+    }
+
+    .nav-btn:hover {
+      background: #e5e7eb;
+      transform: translateY(-1px);
+    }
+
+    .nav-btn.active {
+      background: #2563eb;
+      color: white;
+      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    /* Sections */
+    .section {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e5e7eb;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-header {
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-subtitle {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    /* Grid Layouts */
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    /* Profile Section */
+    .profile-container {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .profile-img {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      border: 4px solid #2563eb;
+      margin: 0 auto 1rem;
+      object-fit: cover;
+      box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+    }
+
+    .profile-name {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-title {
+      font-size: 1.25rem;
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+
+    /* Contact Info */
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      transition: background 0.3s;
+    }
+
+    .contact-item:hover {
+      background: #f3f4f6;
+    }
+
+    .contact-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #2563eb;
+    }
+
+    /* Skills */
+    .skill-item {
+      margin-bottom: 1rem;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-name {
+      font-weight: 600;
+    }
+
+    .skill-percentage {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    .skill-bar {
+      width: 100%;
+      height: 0.5rem;
+      background: #e5e7eb;
+      border-radius: 0.25rem;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      border-radius: 0.25rem;
+      transition: width 1s ease-in-out;
+    }
+
+    /* Experience */
+    .experience-item {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .experience-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .experience-company {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .experience-position {
+      color: #2563eb;
+      font-weight: 600;
+    }
+
+    .experience-date {
+      background: #f3f4f6;
+      color: #374151;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .experience-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .experience-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #6b7280;
+    }
+
+    .experience-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    /* Education */
+    .education-item {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 0.5rem;
+      border-left: 4px solid #2563eb;
+    }
+
+    .education-title {
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 0.25rem;
+    }
+
+    .education-institution {
+      color: #2563eb;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .education-date {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    /* Service Cards */
+    .service-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-icon {
+      width: 4rem;
+      height: 4rem;
+      background: #dbeafe;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+
+    .service-icon svg {
+      width: 2rem;
+      height: 2rem;
+      color: #2563eb;
+    }
+
+    .service-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #1f2937;
+    }
+
+    .service-description {
+      color: #6b7280;
+    }
+
+    /* Portfolio */
+    .portfolio-item {
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .portfolio-item:hover {
+      transform: scale(1.02);
+    }
+
+    .portfolio-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    .portfolio-content {
+      padding: 1.5rem;
+    }
+
+    .portfolio-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #1f2937;
+    }
+
+    .portfolio-description {
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-badge {
+      background: #f3f4f6;
+      color: #374151;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Testimonials */
+    .testimonial-card {
+      padding: 2rem;
+    }
+
+    .stars {
+      display: flex;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .star {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #fbbf24;
+    }
+
+    .testimonial-text {
+      font-size: 1.125rem;
+      font-style: italic;
+      color: #374151;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .testimonial-author {
+      text-align: right;
+    }
+
+    .author-name {
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .author-position {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    /* Pricing */
+    .pricing-card {
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .pricing-card.featured {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -0.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2563eb;
+      color: white;
+      padding: 0.25rem 1rem;
+      border-radius: 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .pricing-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-card.featured .pricing-price {
+      color: white;
+    }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .check-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #10b981;
+    }
+
+    .pricing-card.featured .check-icon {
+      color: #a7f3d0;
+    }
+
+    /* Buttons */
+    .btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #2563eb;
+      border: 2px solid #2563eb;
+    }
+
+    .btn-outline:hover {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* Forms */
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* Resources */
+    .resource-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .resource-item:hover {
+      background: #f9fafb;
+    }
+
+    .resource-info h4 {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: #1f2937;
+    }
+
+    .resource-info p {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    /* FAQ */
+    .faq-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-question {
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: #1f2937;
+      margin-bottom: 0.75rem;
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: #f3f4f6;
+    }
+
+    .faq-answer {
+      color: #6b7280;
+      line-height: 1.6;
+      padding-left: 1rem;
+    }
+
+    .separator {
+      height: 1px;
+      background: #e5e7eb;
+      margin: 1.5rem 0;
+    }
+
+    /* References */
+    .reference-item {
+      background: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #2563eb;
+      margin-bottom: 1rem;
+    }
+
+    .reference-name {
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 0.25rem;
+    }
+
+    .reference-position {
+      color: #2563eb;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .reference-company {
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+
+    .reference-contact {
+      color: #374151;
+      font-size: 0.875rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .header p {
+        font-size: 1rem;
+      }
+
+      .nav {
+        justify-content: center;
+      }
+
+      .nav-btn {
+        flex: 1 1 45%;
+        min-width: 140px;
+      }
+
+      .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-card.featured {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <h1>ANGEL JAVIER YÉPEZ CHACÓN</h1>
+    <p>PORTAFOLIO PROFESIONAL</p>
+  </header>
+
+  <!-- Navigation -->
+  <div class="nav-container">
+    <nav class="nav">
+      <button class="nav-btn active" data-target="curriculum">
+        📄 Currículum
+      </button>
+      <button class="nav-btn" data-target="empresa">
+        🏢 Empresa
+      </button>
+      <button class="nav-btn" data-target="servicios">
+        💻 Servicios
+      </button>
+      <button class="nav-btn" data-target="portafolio">
+        📁 Portafolio
+      </button>
+      <button class="nav-btn" data-target="testimonios">
+        💬 Testimonios
+      </button>
+      <button class="nav-btn" data-target="precios">
+        💰 Precios
+      </button>
+      <button class="nav-btn" data-target="recursos">
+        📚 Recursos
+      </button>
+      <button class="nav-btn" data-target="faq">
+        ❓ FAQ
+      </button>
+      <button class="nav-btn" data-target="contacto">
+        📧 Contacto
+      </button>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Curriculum Section -->
+    <section id="curriculum" class="section active">
+      <div class="profile-container">
+        <img src="images/profile.jpg" alt="Angel Javier Yépez Chacón" class="profile-img" />
+        <h2 class="profile-name">Angel Javier Yépez Chacón</h2>
+        <p class="profile-title">Desarrollador de Software / Especialista en Marketing Digital</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">👤 Datos Personales</h3>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📧</span>
+            <span>ajavieryepez100@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📱</span>
+            <span>0988902331</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <span>0939330106</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🎂</span>
+            <span>19/09/2001</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🆔</span>
+            <span>1750916015</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🇪🇨</span>
+            <span>Ecuatoriano - Soltero</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">🛠️ Habilidades Técnicas</h3>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Java / PHP / Python</span>
+              <span class="skill-percentage">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">HTML / CSS / JavaScript</span>
+              <span class="skill-percentage">90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">WordPress / CMS</span>
+              <span class="skill-percentage">88%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 88%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Bases de Datos (MySQL, PostgreSQL)</span>
+              <span class="skill-percentage">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 80%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Marketing Digital / SEO</span>
+              <span class="skill-percentage">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">💼 Experiencia Laboral</h3>
+        </div>
+        <div class="experience-item">
+          <div class="experience-header">
+            <div>
+              <h4 class="experience-company">Uniformes Rostelli</h4>
+              <p class="experience-position">Asistente de Desarrollo Web y Marketing Digital</p>
+            </div>
+            <span class="experience-date">Febrero 2022 - Diciembre 2024</span>
+          </div>
+          <ul class="experience-list">
+            <li>Diseño, desarrollo y personalización de la interfaz del sitio web en WordPress</li>
+            <li>Implementación de estrategias de Marketing Digital y optimización SEO</li>
+            <li>Creación y administración de contenido web</li>
+            <li>Gestión de bases de datos y documentación digital</li>
+            <li>Resolución de problemas de conectividad de redes y configuración de periféricos</li>
+          </ul>
+        </div>
+        <div class="experience-item">
+          <div class="experience-header">
+            <div>
+              <h4 class="experience-company">Universidad de Especialidades Turísticas (UDET)</h4>
+              <p class="experience-position">Pasantías - Soporte Técnico</p>
+            </div>
+            <span class="experience-date">Agosto 2022 - Marzo 2023</span>
+          </div>
+          <ul class="experience-list">
+            <li>Manejo y actualización de bases de datos internas</li>
+            <li>Digitalización y gestión documental de archivos estudiantiles</li>
+            <li>Mantenimiento preventivo y correctivo de equipos informáticos</li>
+            <li>Elaboración de checklists para organización de expedientes</li>
+          </ul>
+        </div>
+        <div class="experience-item">
+          <div class="experience-header">
+            <div>
+              <h4 class="experience-company">Fundación Sarita Moya</h4>
+              <p class="experience-position">Pasantías - Técnico en Hardware</p>
+            </div>
+            <span class="experience-date">Marzo 2022 - Abril 2022</span>
+          </div>
+          <ul class="experience-list">
+            <li>Diagnóstico y reparación de hardware y software</li>
+            <li>Instalación y configuración de sistemas operativos (Windows, Linux)</li>
+            <li>Mantenimiento preventivo y correctivo de equipos</li>
+            <li>Resolución de problemas de conectividad de redes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">🎓 Educación</h3>
+        </div>
+        <div class="education-item">
+          <div class="education-title">Ingeniería de Sistemas Inteligentes</div>
+          <div class="education-institution">Universidad Bolivariana del Ecuador</div>
+          <div class="education-date">Cursando Actualmente</div>
+        </div>
+        <div class="education-item">
+          <div class="education-title">Tecnología de Desarrollo de Software</div>
+          <div class="education-institution">Instituto Tecnológico Superior "Mayor Pedro Traversari"</div>
+          <div class="education-date">2021 - 2023</div>
+        </div>
+        <div class="education-item">
+          <div class="education-title">Bachiller en Ciencias Generales</div>
+          <div class="education-institution">Unidad Educativa Nuestra Señora del Cisne</div>
+          <div class="education-date">2014 - 2020</div>
+        </div>
+        <div class="education-item">
+          <div class="education-title">Educación Primaria</div>
+          <div class="education-institution">Colegio Particular La Bretaña</div>
+          <div class="education-date">2008 - 2014</div>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">🏆 Certificaciones</h3>
+          </div>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: #f3f4f6; border-radius: 0.5rem;">
+              <strong>CISCO:</strong> Introducción a las Redes
+            </li>
+            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: #f3f4f6; border-radius: 0.5rem;">
+              <strong>CISCO:</strong> CCNAV7: Switching, Routing, and Wireless Essentials
+            </li>
+            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: #f3f4f6; border-radius: 0.5rem;">
+              <strong>ILVEM:</strong> Métodos de Estudio y Lectura Sináptica
+            </li>
+            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: #f3f4f6; border-radius: 0.5rem;">
+              <strong>Ministerio Metropolitano de Quito:</strong> Electricidad Básica
+            </li>
+            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: #f3f4f6; border-radius: 0.5rem;">
+              <strong>Inglés A1-A2:</strong> Instituto Tecnológico Superior "Mayor Pedro Traversari"
+            </li>
+            <li style="padding: 0.5rem; background: #f3f4f6; border-radius: 0.5rem;">
+              <strong>Licencia de Conducir:</strong> Tipo C
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">🎯 Aptitudes</h3>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            <span class="tech-badge">Trabajo en equipo</span>
+            <span class="tech-badge">Comunicación interpersonal</span>
+            <span class="tech-badge">Responsabilidad</span>
+            <span class="tech-badge">Organización</span>
+            <span class="tech-badge">Resolución de problemas</span>
+            <span class="tech-badge">Análisis de datos</span>
+            <span class="tech-badge">Gestión de proyectos</span>
+            <span class="tech-badge">Adaptabilidad</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">📞 Referencias Laborales</h3>
+        </div>
+        <div class="grid grid-2">
+          <div class="reference-item">
+            <div class="reference-name">Richard David Casa Narváez</div>
+            <div class="reference-position">Administrador del SGA</div>
+            <div class="reference-company">Universidad UDET</div>
+            <div class="reference-contact">
+              📞 Fijo: 02282089<br>
+              📱 Móvil: 0958931527
+            </div>
+          </div>
+          <div class="reference-item">
+            <div class="reference-name">Cristian Cando</div>
+            <div class="reference-position">Asistente Técnico de Sistemas</div>
+            <div class="reference-company">Hardware Doctor</div>
+            <div class="reference-contact">
+              📱 Móvil: 0987994148
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Empresa Section -->
+    <section id="empresa" class="section">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">🏢 Sobre Mi Trabajo</h2>
+        </div>
+        <p style="font-size: 1.125rem; color: #374151; line-height: 1.7; margin-bottom: 1rem;">
+          Soy un profesional especializado en desarrollo de software y marketing digital con experiencia en la creación de soluciones web innovadoras. Mi enfoque se centra en combinar habilidades técnicas sólidas con estrategias de marketing digital efectivas para impulsar el crecimiento empresarial.
+        </p>
+        <p style="color: #6b7280;">
+          Con experiencia en múltiples lenguajes de programación, gestión de bases de datos y plataformas CMS, ofrezco soluciones integrales que van desde el desarrollo web hasta la optimización SEO y estrategias de marketing digital.
+        </p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card service-card">
+          <div class="service-icon">
+            <span style="font-size: 2rem;">💻</span>
+          </div>
+          <h3 class="service-title">Desarrollo de Software</h3>
+          <p class="service-description">Experiencia en Java, PHP, Python, HTML, CSS y JavaScript para crear aplicaciones robustas</p>
+        </div>
+        <div class="card service-card">
+          <div class="service-icon">
+            <span style="font-size: 2rem;">📈</span>
+          </div>
+          <h3 class="service-title">Marketing Digital</h3>
+          <p class="service-description">Estrategias SEO, gestión de contenido y optimización web para mejorar la presencia online</p>
+        </div>
+        <div class="card service-card">
+          <div class="service-icon">
+            <span style="font-size: 2rem;">🔧</span>
+          </div>
+          <h3 class="service-title">Soporte Técnico</h3>
+          <p class="service-description">Mantenimiento de hardware, software y resolución de problemas de conectividad</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section id="servicios" class="section">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #1f2937;">🛠️ Mis Servicios</h2>
+        <p style="color: #6b7280; max-width: 600px; margin: 0 auto;">
+          Ofrezco soluciones tecnológicas completas para impulsar tu presencia digital
+        </p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card service-card">
+          <div class="service-icon">
+            <span style="font-size: 2rem;">🌐</span>
+          </div>
+          <h3 class="service-title">Desarrollo Web</h3>
+          <p class="service-description">Creación de sitios web personalizados con WordPress, HTML, CSS y JavaScript.</p>
+        </div>
+        <div class="card service-card">
+          <div class="service-icon">
+            <span style="font-size: 2rem;">📊</span>
+          </div>
+          <h3 class="service-title">Marketing Digital</h3>
+          <p class="service-description">Estrategias SEO, gestión de contenido y optimización para motores de búsqueda.</p>
+        </div>
+        <div class="card service-card">
+          <div class="service-icon">
+            <span style="font-size: 2rem;">💾</span>
+          </div>
+          <h3 class="service-title">Gestión de Bases de Datos</h3>
+          <p class="service-description">Administración y optimización de bases de datos MySQL, PostgreSQL y SQL Server.</p>
+        </div>
+        <div class="card service-card">
+          <div class="service-icon">
+            <span style="font-size: 2rem;">🎨</span>
+          </div>
+          <h3 class="service-title">Diseño Gráfico</h3>
+          <p class="service-description">Creación de contenido visual con Adobe Illustrator, Photoshop, Blender y Canva.</p>
+        </div>
+        <div class="card service-card">
+          <div class="service-icon">
+            <span style="font-size: 2rem;">🔧</span>
+          </div>
+          <h3 class="service-title">Soporte Técnico</h3>
+          <p class="service-description">Mantenimiento de hardware, instalación de software y resolución de problemas técnicos.</p>
+        </div>
+        <div class="card service-card">
+          <div class="service-icon">
+            <span style="font-size: 2rem;">📱</span>
+          </div>
+          <h3 class="service-title">Desarrollo de Aplicaciones</h3>
+          <p class="service-description">Programación en Java, PHP, Python y C++ para aplicaciones personalizadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portafolio Section -->
+    <section id="portafolio" class="section">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #1f2937;">📁 Portafolio</h2>
+        <p style="color: #6b7280;">Algunos de mis proyectos más destacados</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card portfolio-item">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80" alt="Sitio Web Uniformes Rostelli" class="portfolio-img" />
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Sitio Web Uniformes Rostelli</h3>
+            <p class="portfolio-description">Desarrollo y personalización completa del sitio web corporativo con WordPress</p>
+            <div class="tech-badges">
+              <span class="tech-badge">WordPress</span>
+              <span class="tech-badge">PHP</span>
+              <span class="tech-badge">CSS</span>
+              <span class="tech-badge">SEO</span>
+            </div>
+          </div>
+        </div>
+        <div class="card portfolio-item">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80" alt="Sistema de Gestión UDET" class="portfolio-img" />
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Sistema de Gestión UDET</h3>
+            <p class="portfolio-description">Digitalización y gestión de bases de datos estudiantiles</p>
+            <div class="tech-badges">
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">Excel</span>
+              <span class="tech-badge">Gestión Documental</span>
+            </div>
+          </div>
+        </div>
+        <div class="card portfolio-item">
+          <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=400&q=80" alt="Soporte Técnico" class="portfolio-img" />
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Proyectos de Soporte Técnico</h3>
+            <p class="portfolio-description">Mantenimiento y reparación de equipos informáticos</p>
+            <div class="tech-badges">
+              <span class="tech-badge">Hardware</span>
+              <span class="tech-badge">Windows</span>
+              <span class="tech-badge">Linux</span>
+              <span class="tech-badge">Redes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios Section -->
+    <section id="testimonios" class="section">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #1f2937;">💬 Testimonios</h2>
+        <p style="color: #6b7280;">Lo que dicen sobre mi trabajo</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card testimonial-card">
+          <div class="stars">
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+          </div>
+          <p class="testimonial-text">"Angel demostró gran profesionalismo en el desarrollo de nuestro sitio web. Su conocimiento en WordPress y SEO fue fundamental para mejorar nuestra presencia online."</p>
+          <div class="testimonial-author">
+            <p class="author-name">Equipo Uniformes Rostelli</p>
+            <p class="author-position">Cliente - Desarrollo Web</p>
+          </div>
+        </div>
+        <div class="card testimonial-card">
+          <div class="stars">
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+          </div>
+          <p class="testimonial-text">"Su trabajo en la digitalización de nuestros archivos estudiantiles fue excepcional. Muy organizado y eficiente en la gestión de bases de datos."</p>
+          <div class="testimonial-author">
+            <p class="author-name">Universidad UDET</p>
+            <p class="author-position">Institución Educativa</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Precios Section -->
+    <section id="precios" class="section">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #1f2937;">💰 Planes y Precios</h2>
+        <p style="color: #6b7280;">Servicios adaptados a tus necesidades</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card pricing-card">
+          <h3 class="pricing-name">Desarrollo Web Básico</h3>
+          <div class="pricing-price">$299</div>
+          <ul class="pricing-features">
+            <li><span class="check-icon">✅</span> Sitio web en WordPress</li>
+            <li><span class="check-icon">✅</span> Diseño responsivo</li>
+            <li><span class="check-icon">✅</span> SEO básico</li>
+            <li><span class="check-icon">✅</span> Soporte 30 días</li>
+          </ul>
+          <button class="btn btn-full">Contratar</button>
+        </div>
+        <div class="card pricing-card featured">
+          <div class="pricing-badge">Más Popular</div>
+          <h3 class="pricing-name">Desarrollo Web + Marketing</h3>
+          <div class="pricing-price">$599</div>
+          <ul class="pricing-features">
+            <li><span class="check-icon">✅</span> Sitio web completo</li>
+            <li><span class="check-icon">✅</span> Estrategia SEO avanzada</li>
+            <li><span class="check-icon">✅</span> Marketing digital</li>
+            <li><span class="check-icon">✅</span> Gestión de contenido</li>
+            <li><span class="check-icon">✅</span> Soporte 90 días</li>
+          </ul>
+          <button class="btn btn-full">Contratar</button>
+        </div>
+        <div class="card pricing-card">
+          <h3 class="pricing-name">Solución Empresarial</h3>
+          <div class="pricing-price">$999</div>
+          <ul class="pricing-features">
+            <li><span class="check-icon">✅</span> Aplicación personalizada</li>
+            <li><span class="check-icon">✅</span> Base de datos avanzada</li>
+            <li><span class="check-icon">✅</span> Soporte técnico completo</li>
+            <li><span class="check-icon">✅</span> Mantenimiento incluido</li>
+            <li><span class="check-icon">✅</span> Consultoría IT</li>
+          </ul>
+          <button class="btn btn-full">Contratar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recursos Section -->
+    <section id="recursos" class="section">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">📚 Recursos y Documentos</h2>
+          <p class="card-subtitle">Certificaciones y recursos técnicos disponibles</p>
+        </div>
+        <div class="resource-item">
+          <div class="resource-info">
+            <h4>Certificación CISCO - Redes</h4>
+            <p>Introducción a las Redes y CCNAV7</p>
+          </div>
+          <button class="btn btn-outline">Ver Certificado</button>
+        </div>
+        <div class="resource-item">
+          <div class="resource-info">
+            <h4>Guía de SEO y Marketing Digital</h4>
+            <p>Estrategias implementadas en proyectos reales</p>
+          </div>
+          <button class="btn btn-outline">Descargar</button>
+        </div>
+        <div class="resource-item">
+          <div class="resource-info">
+            <h4>Portfolio de Diseño Gráfico</h4>
+            <p>Trabajos realizados con Adobe Creative Suite</p>
+          </div>
+          <button class="btn btn-outline">Ver Portfolio</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">❓ Preguntas Frecuentes</h2>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Qué tecnologías manejo?</div>
+          <p class="faq-answer">Trabajo con Java, PHP, Python, HTML, CSS, JavaScript, WordPress, MySQL, PostgreSQL, y herramientas de diseño como Adobe Creative Suite.</p>
+        </div>
+        <div class="separator"></div>
+        <div class="faq-item">
+          <div class="faq-question">¿Ofrezco servicios de mantenimiento?</div>
+          <p class="faq-answer">Sí, ofrezco servicios de mantenimiento web, soporte técnico y actualización de contenido según las necesidades del cliente.</p>
+        </div>
+        <div class="separator"></div>
+        <div class="faq-item">
+          <div class="faq-question">¿Cuánto tiempo toma desarrollar un sitio web?</div>
+          <p class="faq-answer">Depende de la complejidad del proyecto. Un sitio básico puede tomar 2-3 semanas, mientras que proyectos más complejos pueden requerir 1-2 meses.</p>
+        </div>
+        <div class="separator"></div>
+        <div class="faq-item">
+          <div class="faq-question">¿Trabajo de forma remota?</div>
+          <p class="faq-answer">Sí, tengo experiencia trabajando de forma remota como lo demostré en mi trabajo con IBERTECH en España.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="section">
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">📧 Información de Contacto</h3>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📧</span>
+            <span>ajavieryepez100@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📱</span>
+            <span>0988902331</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <span>0939330106</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🇪🇨</span>
+            <span>Ecuador</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">💌 Envíame un Mensaje</h3>
+          </div>
+          <form onsubmit="alert('Mensaje enviado! Te contactaré pronto.'); return false;">
+            <div class="form-group">
+              <input type="text" class="form-input" placeholder="Nombre completo" required />
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-input" placeholder="Correo electrónico" required />
+            </div>
+            <div class="form-group">
+              <textarea class="form-input form-textarea" placeholder="Describe tu proyecto o consulta" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-full">Enviar Mensaje</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 2rem;">
+        <div class="card-header">
+          <h3 class="card-title">👨‍💻 Sobre Mi Trabajo</h3>
+        </div>
+        <p style="color: #374151; line-height: 1.7; margin-bottom: 1rem;">
+          Soy Angel Javier Yépez Chacón, un desarrollador de software y especialista en marketing digital con experiencia comprobada en el desarrollo de soluciones web, gestión de bases de datos y estrategias digitales. Mi enfoque se centra en crear soluciones tecnológicas que impulsen el crecimiento empresarial.
+        </p>
+        <p style="color: #6b7280;">
+          Con formación en Tecnología de Desarrollo de Software y actualmente cursando Ingeniería de Sistemas Inteligentes, combino conocimientos técnicos sólidos con habilidades prácticas adquiridas en proyectos reales.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Angel Javier Yépez Chacón. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Navigation functionality
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const sections = document.querySelectorAll('.section');
+
+    navButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons and sections
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        sections.forEach(section => section.classList.remove('active'));
+
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        // Show corresponding section
+        const targetId = button.getAttribute('data-target');
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          targetSection.classList.add('active');
+        }
+
+        // Smooth scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Animate skill bars when curriculum section is active
+    function animateSkillBars() {
+      const skillBars = document.querySelectorAll('.skill-progress');
+      skillBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => {
+          bar.style.width = width;
+        }, 300);
+      });
+    }
+
+    // Trigger skill bar animation when curriculum is shown
+    const curriculumBtn = document.querySelector('[data-target="curriculum"]');
+    if (curriculumBtn) {
+      curriculumBtn.addEventListener('click', () => {
+        setTimeout(animateSkillBars, 100);
+      });
+    }
+
+    // Initial animation for skill bars
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(animateSkillBars, 500);
+    });
+
+    // FAQ toggle functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        if (answer && answer.classList.contains('faq-answer')) {
+          answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
